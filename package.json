@@ -1,18 +1,39 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.6",
-    "react-scripts": "1.0.10",
-    "redux": "^3.7.2"
-  },
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "A todo-list demo for learning React + Redux",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --config ./webpack.confg.js",
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Copyes/React-Demo.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "lip.fan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Copyes/React-Demo/issues"
+  },
+  "homepage": "https://github.com/Copyes/React-Demo#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.9",
+    "html-webpack-plugin": "^2.30.1",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.10.0"
   }
 }
