@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
-import './progress'
+import './progress.less'
 
 class Progress extends Component {
-  getDefaulrProps() {
-    return {
-      barColor: '#2f9842'
-    }
+  constructor(props) {
+    super(props)
+    console.log(props)
+    this.changeProgress = this.changeProgress.bind(this)
   }
   changeProgress(e) {
-    let progressBar = this.refs.progressBar
+    let progressBar = this.progressBar
     let progress =
       (e.clientX - progressBar.getBoundingClientRect().left) /
       progressBar.clientWidth
-    console.log(progress)
+    this.props.onProgressChange && this.props.onProgressChange(progress)
   }
   render() {
     return (
       <div
         className="com-progress"
-        ref="progressBar"
+        ref={progressBar => {
+          this.progressBar = progressBar
+        }}
         onClick={this.changeProgress}
       >
         <div
@@ -32,5 +34,7 @@ class Progress extends Component {
     )
   }
 }
-
+Progress.defaultProps = {
+  barColor: '#2f9842'
+}
 export default Progress

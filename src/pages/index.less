@@ -1,0 +1,65 @@
+.page-index {
+  margin: auto;
+  margin-top: 120px;
+  width: 700px;
+
+  .caption {
+    color: rgb(47, 152, 66);
+    font-size: 16px;
+  }
+
+  .cover {
+    margin-left: 20px;
+    width: 180px;
+    height: 180px;
+
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+    }
+  }
+  .volume-container {
+    position: relative;
+    top: -3px;
+    left: 20px;
+  }
+  .volume-container .volume-wrapper {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+  .volume-container:hover .volume-wrapper {
+    opacity: 1;
+  }
+  .music-title {
+    height: 36px;
+    color: rgb(3, 3, 3);
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 36px;
+  }
+  .music-artist {
+    color: rgb(74, 74, 74);
+    font-weight: 400;
+    font-size: 15px;
+  }
+  .left-time {
+    width: 40px;
+    color: #999;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .icon {
+    cursor: pointer;
+  }
+  .ml20 {
+    margin-left: 20px;
+  }
+  .mt35 {
+    margin-top: 35px;
+  }
+  .volume-wrapper {
+    display: inline-block;
+    width: 60px;
+  }
+}
