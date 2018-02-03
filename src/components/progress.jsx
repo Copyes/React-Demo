@@ -4,7 +4,6 @@ import './progress.less'
 class Progress extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.changeProgress = this.changeProgress.bind(this)
   }
   changeProgress(e) {
@@ -18,6 +17,7 @@ class Progress extends Component {
     return (
       <div
         className="com-progress"
+        style={{ width: `${this.props.width}` }}
         ref={progressBar => {
           this.progressBar = progressBar
         }}
@@ -35,6 +35,7 @@ class Progress extends Component {
   }
 }
 Progress.defaultProps = {
-  barColor: '#2f9842'
+  barColor: '#2f9842',
+  width: '100%'
 }
 export default Progress

@@ -175,7 +175,7 @@
   float: right;
 }
 
-.icon {
+/* .icon {
   display: inline-block;
   width: 32px;
   height: 32px;
@@ -218,4 +218,4 @@
   background: url(../images/icons.png) no-repeat;
   background-position: 0 -112px;
   background-size: 16px auto;
-}
+} */
