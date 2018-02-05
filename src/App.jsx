@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
+import {
+  HashRouter as Router,
+  Route,
+  Link,
+  Switch
+  // etc.
+} from 'react-router-dom'
 import Header from './components/header'
 import Pubsub from 'pubsub-js'
 import Index from './pages/index'
+import List from './pages/list'
 import { MUSIC_LIST } from './data/index.js'
 import { random } from './utils/index'
-
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       musicList: MUSIC_LIST,
       currentMusitItem: {},
-      repeatType: 'cycle'
+      repeatType: 'cycle',
+      showListFlag: false
     }
   }
   componentDidMount() {
@@ -36,6 +44,21 @@ class App extends Component {
       index = (index + 1) % STATUS_LIST.length
       this.setState({
         repeatType: STATUS_LIST[index]
+      })
+    })
+    PubSub.subscribe('PLAY_MUSIC', (msg, item) => {
+      this.playMusic(item)
+    })
+    PubSub.subscribe('DEL_MUSIC', (msg, item) => {
+      this.setState({
+        musicList: this.state.musicList.filter(music => {
+          return music !== item
+        })
+      })
+    })
+    Pubsub.subscribe('SHOW_LIST', () => {
+      this.setState({
+        showListFlag: !this.state.showListFlag
       })
     })
   }
@@ -87,6 +110,15 @@ class App extends Component {
     return Math.max(0, this.state.musicList.indexOf(music))
   }
   render() {
+    let list = null
+    if (this.state.showListFlag) {
+      list = (
+        <List
+          currentItem={this.state.currentMusitItem}
+          musicList={this.state.musicList}
+        />
+      )
+    }
     return (
       <div className="container">
         <Header />
@@ -94,9 +126,19 @@ class App extends Component {
           currentMusitItem={this.state.currentMusitItem}
           repeatType={this.state.repeatType}
         />
+        {list}
       </div>
     )
   }
 }
+
+// const Root = () => (
+//   <Router>
+//     <div>
+//       <Route exact path="/" component={App} />
+//       <Route exact path="/list/:id" component={List} />
+//     </div>
+//   </Router>
+// )
 
 export default App

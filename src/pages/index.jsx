@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Progress from '../components/progress'
 import Pubsub from 'pubsub-js'
 
@@ -59,6 +60,9 @@ class Index extends Component {
   changeRepeat() {
     Pubsub.publish('CHANGE_REPEAT')
   }
+  showList() {
+    Pubsub.publish('SHOW_LIST')
+  }
   formatTime(time) {
     time = Math.floor(time)
     let miniute = Math.floor(time / 60)
@@ -69,7 +73,11 @@ class Index extends Component {
   render() {
     return (
       <div className="page-index">
-        <h1 className="caption">我的私人音乐坊 &gt;</h1>
+        {/* <Link to={`/list/${this.props.currentMusitItem.id}`}> */}
+        <h1 className="caption" onClick={this.handleSend}>
+          我的私人音乐坊 &gt;
+        </h1>
+        {/* </Link> */}
         <div className="mt20 row">
           <div className="controll-wrapper">
             <h2 className="music-title">{this.props.currentMusitItem.title}</h2>
@@ -123,7 +131,12 @@ class Index extends Component {
                 />
                 <i className="icon next ml30" onClick={this.next.bind(this)} />
               </div>
-              <div className="icon-show-more" />
+              <div
+                className="icon-show-more"
+                onClick={this.showList.bind(this)}
+              >
+                列表
+              </div>
             </div>
           </div>
         </div>

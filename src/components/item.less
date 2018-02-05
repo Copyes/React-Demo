@@ -1,0 +1,22 @@
+.com-item {
+  box-sizing: border-box;
+  padding-right: 20px;
+  height: 36px;
+  border-bottom: 1px solid #ddd;
+  text-indent: 10px;
+  line-height: 36px;
+  cursor: pointer;
+  .delete {
+    float: right;
+    &:hover {
+      color: red;
+    }
+  }
+
+  &.focus {
+    color: #2f9842;
+  }
+}
+.com-item:hover {
+  background: #eee;
+}
